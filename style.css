@@ -1,0 +1,536 @@
+/* =========================================================
+   Student Portfolio – Aradhya Rastogi Aggarwal
+   Creative gradient design. Beginner-friendly, heavily commented.
+   Tip: change the colours in the :root block to restyle everything.
+   ========================================================= */
+
+
+/* ---------- 1. COLOUR & FONT VARIABLES ----------
+   Variables let you change a colour once and it updates everywhere. */
+:root {
+  --ink: #1d1033;          /* dark purple for text */
+  --paper: #fff9fb;        /* soft off-white background */
+  --violet: #5b2bd9;
+  --magenta: #e0359b;
+  --orange: #ff8a3d;
+  --soft: #f3e9ff;         /* light lavender for panels */
+
+  /* The signature gradient used across the site */
+  --gradient: linear-gradient(120deg, var(--violet), var(--magenta) 55%, var(--orange));
+
+  --font-heading: "Sora", "Segoe UI", Arial, sans-serif;
+  --font-body: "Nunito", "Segoe UI", Arial, sans-serif;
+}
+
+
+/* ---------- 2. BASIC RESET ---------- */
+* {
+  box-sizing: border-box;   /* padding is included in element width */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;  /* smooth scrolling when clicking menu links */
+  scroll-padding-top: 80px; /* stops the sticky header from covering headings */
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+a {
+  color: var(--violet);
+}
+
+ul {
+  list-style: none;
+}
+
+/* Visible outline for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+
+/* ---------- 3. HEADER / NAVIGATION ---------- */
+.site-header {
+  position: sticky;         /* stays at the top while scrolling */
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;          /* lets the menu drop below the logo on small screens */
+  gap: 0.5rem 1.5rem;
+  padding: 0.9rem 6%;
+  background: rgba(255, 249, 251, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 3px solid transparent;
+  border-image: var(--gradient) 1;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.4rem;
+  text-decoration: none;
+  /* gradient text */
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.4rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--ink);
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover {
+  border-bottom-color: var(--magenta);
+}
+
+
+/* ---------- 4. HERO SECTION ---------- */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 5rem 6% 6rem;
+  color: #fff;
+  /* Gradient background with a soft glow */
+  background:
+    radial-gradient(circle at 85% 20%, rgba(255, 138, 61, 0.55), transparent 45%),
+    linear-gradient(135deg, #2a0f6b 0%, var(--violet) 40%, var(--magenta) 100%);
+}
+
+.hero-text {
+  max-width: 600px;
+}
+
+.hero-hello {
+  font-weight: 700;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 4rem); /* grows/shrinks with screen width */
+  font-weight: 800;
+  margin: 0.3rem 0 0.8rem;
+}
+
+.hero-role {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-intro {
+  max-width: 52ch;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Profile photo placeholder (a circle with initials) */
+.hero-photo {
+  flex-shrink: 0;
+}
+
+.photo-placeholder,
+.photo {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 6px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.photo {
+  object-fit: cover;        /* crops your real photo neatly into the circle */
+}
+
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, var(--orange), var(--magenta));
+}
+
+.photo-placeholder span {
+  font-family: var(--font-heading);
+  font-size: 4.5rem;
+  font-weight: 800;
+}
+
+.photo-placeholder small {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+
+/* ---------- 5. BUTTONS ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;     /* pill shape */
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #fff;
+  transition: transform 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-solid {
+  background: #fff;
+  color: var(--violet);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #fff;
+}
+
+/* Buttons on light backgrounds (contact form) need different colours */
+.contact-form .btn-solid {
+  background: var(--gradient);
+  color: #fff;
+  border-color: transparent;
+}
+
+
+/* ---------- 6. GENERAL SECTIONS ---------- */
+.section {
+  padding: 4.5rem 6%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section h2 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin-bottom: 1.8rem;
+  display: inline-block;
+  padding-bottom: 0.4rem;
+  /* gradient underline */
+  background: var(--gradient) bottom / 100% 5px no-repeat;
+}
+
+.section h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+
+/* ---------- 7. ABOUT ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* two equal columns */
+  gap: 2rem;
+}
+
+
+/* ---------- 8. EDUCATION TIMELINE ---------- */
+.timeline {
+  border-left: 4px solid var(--magenta);
+  padding-left: 1.6rem;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* The round dot on the line */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.6rem - 10px);
+  top: 0.45rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: 3px solid var(--paper);
+}
+
+.meta {
+  font-weight: 700;
+  color: var(--magenta);
+}
+
+
+/* ---------- 9. SKILLS ---------- */
+.skills-wrap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.skill-group {
+  background: var(--soft);
+  padding: 1.5rem;
+  border-radius: 20px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.chips li {
+  padding: 0.25rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--gradient);
+}
+
+
+/* ---------- 10. PROJECT CARDS ---------- */
+.cards {
+  display: grid;
+  /* Automatically fits as many cards per row as space allows */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.6rem;
+  background: #fff;
+  border-radius: 20px;
+  border-top: 6px solid var(--magenta);
+  box-shadow: 0 8px 25px rgba(91, 43, 217, 0.12);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* Give each card a different top colour */
+.card:nth-child(1) { border-top-color: var(--violet); }
+.card:nth-child(2) { border-top-color: var(--magenta); }
+.card:nth-child(3) { border-top-color: var(--orange); }
+
+.card p {
+  margin-bottom: 0.8rem;
+}
+
+.tags {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--violet);
+}
+
+.card-link {
+  margin-top: auto;         /* pushes the link to the bottom of the card */
+  font-weight: 700;
+}
+
+
+/* ---------- 11. INTERESTS & ACHIEVEMENTS ---------- */
+.two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.panel {
+  padding: 1.6rem;
+  border-radius: 20px;
+  background: var(--soft);
+}
+
+.panel li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-top: 0.4rem;
+}
+
+/* Small gradient bullet */
+.panel li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gradient);
+}
+
+
+/* ---------- 12. CONTACT ---------- */
+.contact-intro {
+  margin-bottom: 1.5rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.contact-list li {
+  margin-bottom: 0.8rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.8rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(91, 43, 217, 0.12);
+}
+
+.contact-form label {
+  font-weight: 700;
+  margin-top: 0.6rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.7rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  border: 2px solid #d9c9f5;
+  border-radius: 12px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--magenta);
+}
+
+.contact-form .btn {
+  margin-top: 1.2rem;
+  align-self: flex-start;
+}
+
+
+/* ---------- 13. FOOTER ---------- */
+.site-footer {
+  padding: 1.8rem 6%;
+  text-align: center;
+  color: #fff;
+  background: var(--gradient);
+}
+
+
+/* ---------- 14. RESPONSIVE DESIGN ----------
+   @media rules apply only when the screen is narrower than the given width. */
+
+/* Tablets and small laptops */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column-reverse;  /* photo goes above the text */
+    text-align: center;
+    padding-top: 3rem;
+  }
+
+  .hero-intro {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .skills-wrap,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  .site-header {
+    justify-content: center;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+
+  .about-grid,
+  .two-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-placeholder,
+  .photo {
+    width: 200px;
+    height: 200px;
+  }
+
+  .photo-placeholder span {
+    font-size: 3.5rem;
+  }
+
+  .section {
+    padding: 3rem 6%;
+  }
+}
+
+/* Respect people who turn off animations in their device settings */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn,
+  .card {
+    transition: none;
+  }
+}
